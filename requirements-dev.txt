@@ -1,0 +1,6 @@
+# Python 3.12; cloud installation uses a separate Linux wheel hash lock.
+pyboy==2.7.0
+Pillow==11.3.0
+numpy==2.3.3
+PySDL2==0.9.17
+pysdl2-dll==2.32.10

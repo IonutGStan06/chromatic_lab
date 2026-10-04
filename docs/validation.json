@@ -1,0 +1,36 @@
+{
+  "rom": "chromatic-arcade.gbc",
+  "size_bytes": 32768,
+  "sha256": "007ac5589b4183ff69ea93976a80ddfee0795ad60e7658164cc70a16cd05a4e2",
+  "checks": [
+    {
+      "check": "32 KB color-compatible cartridge and checksums",
+      "outcome": "passed"
+    },
+    {
+      "check": "all five games boot, pause and return in CGB and DMG modes",
+      "outcome": "passed"
+    },
+    {
+      "check": "stack movement, rotation, hard drop, line clearing, top-out and retry",
+      "outcome": "passed"
+    },
+    {
+      "check": "platform movement, jump, landing, gap death, pause and retry",
+      "outcome": "passed"
+    },
+    {
+      "check": "raycast shooter rotation, hit, score, damage, pause and retry",
+      "outcome": "passed"
+    },
+    {
+      "check": "asteroid thrust, inertia, firing, rock hit and pause",
+      "outcome": "passed"
+    },
+    {
+      "check": "crate undo and three puzzle completions through controller input",
+      "outcome": "passed"
+    }
+  ],
+  "hardware_tested": false
+}
