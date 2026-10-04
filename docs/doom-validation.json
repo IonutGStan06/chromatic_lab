@@ -1,0 +1,204 @@
+{
+  "scope": "Actual Doom engine, production FrameSender and compiled CGB receiver in PyBoy; no physical hardware or USB validation",
+  "generated_at_utc": "2026-10-04T19:57:50.561120+00:00",
+  "engine_library_sha256": "3638c8093abbd5282a62ec173ac62bfeb3de4e96d3aef81924c82485e23de0e9",
+  "iwad_sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+  "host_source_sha256": {
+    "host/__init__.py": "1bd4f37f332959e9984045a5a7bac318407d1efbe3b5e1147f404f6849c7442e",
+    "host/engine.py": "c9b5ec71f05b244b870aa47921fd173bdc696600dc9473e75e74065e515ff3d7",
+    "host/transport.py": "eb4b88c417a950d833cfb538d975bf572eff2e15c1af3b462aba4bf7c2e80367",
+    "host/video.py": "58072bac6ee918476a5737cea35571b738e9e5b5588e816b7b71d5e4c58d35e5"
+  },
+  "receiver_source_sha256": "9537bc03c830ec4e4bcf4ea48f244999d57ae92e6e9697322eea065e0cde5975",
+  "receiver_sha256": "8d442ab23682df0afeac5e1f204f596eb226dc7879c0f145066dfbb89d393276",
+  "exact_pixelwise_frame_comparisons": 35,
+  "sender_checks": [
+    "payload before commit",
+    "single outstanding frame",
+    "ACK clears pending",
+    "production input decoding"
+  ],
+  "final_emulator_png_sha256": "f8c7e2a06446d789825b7868bcd7e4a45c65c90ba9ffc31db176ee619c50c28c",
+  "final_encoded_viewport_sha256": "5ef69f8af6755868684da1d7b17e6854c7e8f1cc9394eba2ec51e52a390dd2c4",
+  "viewport": {
+    "x": 8,
+    "y": 16,
+    "width": 144,
+    "height": 112
+  },
+  "turn_changed_world_pixels": 36149,
+  "movement_changed_world_pixels": 41684,
+  "input_checks": [
+    "Right turns",
+    "Up moves",
+    "A fires and reduces ammo"
+  ],
+  "receiver_emulated_frame_latencies": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "gif_note": "Genuine 160x144 emulator frames enlarged 4x with nearest-neighbor; edited presentation timing, no fake handheld panel",
+  "engine_validation": {
+    "iwad_sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+    "engine_commit": "dcb7a8dbc7a16ce3dda29382ac9aae9d77d21284",
+    "checks": [
+      "original shareware checksum",
+      "all nine levels render",
+      "deterministic replay",
+      "turn changes world",
+      "fire consumes ammo",
+      "normal quit returns to host"
+    ],
+    "scope": "host engine only; no physical Chromatic validation",
+    "results": [
+      {
+        "level": "E1M1",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "b909534627b42ec573e3c3dae8a58e99be37fd015197f42303cf603a59d6d15e",
+        "final_sha256": "a69c746ea572813fc56ad23f4acc04a360a4afa4382fe6348df3c13ed3897662",
+        "colors": 155
+      },
+      {
+        "level": "E1M2",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "1f8becd599738d7db6c53a436861e2122fdb2e37bdfb09656da44472196f3f24",
+        "final_sha256": "c45df11be82898ea2068b9ef1003d1431e7bb3c90f28d30304e083ff9b70f4a5",
+        "colors": 137
+      },
+      {
+        "level": "E1M3",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "29645892584d32cefd47ca7fe068f1f2bd6c6bb7c4714530820f6cef67784cd8",
+        "final_sha256": "db099b5532482b1373bb1ba5c5575e6652d4607421a4853e451502c5df31adb8",
+        "colors": 144
+      },
+      {
+        "level": "E1M4",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "c6d26afcc44db45f86245b90e514bbf91ff909989fe9dd08dbc1100037aeb565",
+        "final_sha256": "7f7e171d87e353b31ba955b403d5ec532495dac2035d1d57488cb144552a64f4",
+        "colors": 138
+      },
+      {
+        "level": "E1M5",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "851d8ebfb9858d014923ed7f4c8b58a2eaa82b7305b3d48008b1b00549051bc2",
+        "final_sha256": "580605bcb125852d11b62492088945502b74ddd897370cb84255660bf059ab7b",
+        "colors": 115
+      },
+      {
+        "level": "E1M6",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "0cc05abd67c722b5c3c6d73f8fd195384b92ef60ae47d7d16ad2700ccc79cf57",
+        "final_sha256": "f41380dbef22a8f67000615884f7bbd8fc9add22628982fb8b8962942976333b",
+        "colors": 125
+      },
+      {
+        "level": "E1M7",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "73f8283bc4f8f56bb4930ecdd7db41cf1e2f2ce68a6ec46487c3131a971d1451",
+        "final_sha256": "92a72d7f3f4b3bf6f3b0c8df981eef0ec6cee34aa84e50a6238636ef6ead745d",
+        "colors": 124
+      },
+      {
+        "level": "E1M8",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "d372209d060f51262841e1ae3a4b61ce8d0f4d484f5de1d17f1aa144258b218a",
+        "final_sha256": "6ba5c9b908f6cb9be7bcacd3332a17f59c4f0a285ee44f06cfad023b212af093",
+        "colors": 98
+      },
+      {
+        "level": "E1M9",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "26663a1f46f64c619a2438b4f2d4d51388865f8072e4726bd8e6281b201905c7",
+        "final_sha256": "c2c2532243bddb3ca4c2d8e12545b4218545013362941f0f045671b55cdefee0",
+        "colors": 125
+      },
+      {
+        "level": "E1M1",
+        "scenario": "idle",
+        "frames": 112,
+        "initial_sha256": "b909534627b42ec573e3c3dae8a58e99be37fd015197f42303cf603a59d6d15e",
+        "final_sha256": "a69c746ea572813fc56ad23f4acc04a360a4afa4382fe6348df3c13ed3897662",
+        "colors": 155
+      },
+      {
+        "level": "E1M1",
+        "scenario": "turn",
+        "frames": 112,
+        "initial_sha256": "b909534627b42ec573e3c3dae8a58e99be37fd015197f42303cf603a59d6d15e",
+        "final_sha256": "7c7e07d4c315cdf34ca4ec5d1437c61e699ebb81262bbba9f6ba75f61594e8b5",
+        "colors": 124
+      },
+      {
+        "level": "E1M1",
+        "scenario": "fire",
+        "frames": 112,
+        "initial_sha256": "b909534627b42ec573e3c3dae8a58e99be37fd015197f42303cf603a59d6d15e",
+        "final_sha256": "1176a81cab13bcbb15fc2ebc895a9e84bf35c2be5a1f1ba3fbb020983271f9af",
+        "colors": 199
+      },
+      {
+        "level": "E1M1",
+        "scenario": "quit",
+        "frames": 116,
+        "initial_sha256": "b909534627b42ec573e3c3dae8a58e99be37fd015197f42303cf603a59d6d15e",
+        "final_sha256": "a69c746ea572813fc56ad23f4acc04a360a4afa4382fe6348df3c13ed3897662",
+        "colors": 155
+      }
+    ]
+  },
+  "physical_hardware": "Not tested; Mac USB access and matching experimental firmware are required",
+  "audio": "Disabled",
+  "published_media_sha256": {
+    "doom-preview.gif": "eaa7a1c9f45b349345a48f55afee5f9248067664911fd67890b4fa6ba804e8f3",
+    "doom-preview.png": "0605d7911fd2bd39fc4a35f4b64110815491f11e9b24d7e3bf76034d47b0c653"
+  },
+  "rtl_validation": {
+    "upstream_commit": "0adf3822613a0230d18e0d73193f78337d1100b6",
+    "scope": "Actual upstream VirtualCart/MBC RTL with modeled memory controller; no USB or physical board",
+    "evidence": "See docs/doom-rtl-validation.txt for the separately executed optional test"
+  }
+}

@@ -1,0 +1,4 @@
+# Optional: only for the experimental physical ChromatiX-vcart bridge.
+litex==2024.12
+migen==0.9.2
+pyserial==3.5

@@ -1,0 +1,61 @@
+Recorded summary of a completed RTL simulation run
+================================================
+
+This file records the observed result of the completed run described below.
+It is a summary, not a verbatim captured terminal log or a hardware test report.
+
+Working directory: /workspace/chromatic_lab
+Command executed:
+  CHROMATIX_SOURCE=/tmp/chromatic-doom-litex \
+  /tmp/chromatic-doom-rtl-venv/bin/python -m unittest \
+    discover -s doom/tests -p test_vcart_cache.py -v
+
+Observed result: both tests passed (unittest OK).
+Observed elapsed time reported by unittest: 80.754 seconds.
+Python: 3.12.14
+Migen: 0.9.2
+LiteX: 2024.12
+
+Upstream source: https://github.com/enjoy-digital/chromatix
+Upstream revision: 0adf3822613a0230d18e0d73193f78337d1100b6
+Imported upstream implementation: chromatix/gateware/vcart.py
+Test script: doom/tests/test_vcart_cache.py
+SHA256 of the tested script:
+  1cd2aa6b7f6ca5ffe610c10157333df543a4952d2fb81cc8e9c35f823c669d95
+
+Tests observed passing:
+  VirtualCartCoherenceTests.test_alternating_full_payload_banks_evict_every_stale_line
+  VirtualCartCoherenceTests.test_metadata_requires_eviction_and_ack_preserves_request
+
+Scope and findings:
+  The test imports the pinned upstream VirtualCart and MBC RTL. Migen simulates
+  the actual cache, cache fills, clock-domain crossings, and write-through FSM.
+  A memory-port model supplies backing-memory reads/writes and host changes.
+
+  The production 256-line, 16-byte direct-mapped cache is used. Test payload
+  reads visit both ends of every relevant cache line in tiles, attributes,
+  and palettes, in receiver order. Tiles use the DMA request input; attributes
+  and palettes use the CPU read input. Full CPU/HDMA instruction execution is
+  outside this test's scope.
+
+  Host changes to a previously cached bank demonstrably remain stale without
+  eviction. Alternating complete payload banks 1 and 2 refreshes every tested
+  line, including the indices shared by tiles, attributes, and palettes.
+  Reading bank 3 offset 0 before bank 0 metadata refreshes the metadata line.
+  A split metadata commit can expose a new sequence with the preceding bank;
+  the receiver must reject reuse of its last accepted payload bank.
+  Device writes at bank 0 offset 0x10 reach backing memory without changing
+  the host-owned metadata line at offset 0.
+
+Limitations:
+  This run does not simulate the PSRAM arbiter/PHY, USB transport, the complete
+  Game Boy CPU, or electrical timing. It does not establish physical-device
+  frame rate or verify a firmware installation. The complete USB connection
+  still requires testing on an actual Chromatic.
+
+Reproduction:
+  Use a checkout at the exact upstream revision above. Install Migen 0.9.2 and
+  LiteX 2024.12 into a Python virtual environment, set CHROMATIX_SOURCE to that
+  checkout, and run the unittest command with your Python executable.
+  Allow roughly 90 seconds. Without CHROMATIX_SOURCE, unittest discovery skips
+  this optional RTL suite; a skipped run is not equivalent to this passing run.
