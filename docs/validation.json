@@ -1,7 +1,7 @@
 {
   "rom": "chromatic-arcade.gbc",
   "size_bytes": 32768,
-  "sha256": "007ac5589b4183ff69ea93976a80ddfee0795ad60e7658164cc70a16cd05a4e2",
+  "sha256": "57439f25895e4da04532ac4e871dc1f4ada788a21b78e06b4b873fbd15325c93",
   "checks": [
     {
       "check": "32 KB color-compatible cartridge and checksums",
@@ -9,6 +9,10 @@
     },
     {
       "check": "all five games boot, pause and return in CGB and DMG modes",
+      "outcome": "passed"
+    },
+    {
+      "check": "pause and game-over overlays hide sprites, resume and retry restore them",
       "outcome": "passed"
     },
     {

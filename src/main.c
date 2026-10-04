@@ -121,6 +121,7 @@ static void draw_game(void) {
     text(0,17,"START PAUSE SEL MENU");
     if (paused || game_over) {
         uint8_t y,x;
+        hide_sprites();
         for (y=6;y<11;y++) for (x=1;x<19;x++) tile(x,y,' ');
         text(5,7,paused ? "PAUSED" : game_over==2 ? "YOU DID IT!" : "GAME OVER");
         text(2,9,paused ? "START TO CONTINUE" : "A RETRY  B MENU");

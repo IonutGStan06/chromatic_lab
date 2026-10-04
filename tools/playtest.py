@@ -115,6 +115,35 @@ def launcher():
         finally: s.close()
 
 
+def sprite_overlays():
+    def positions(s):
+        # Read real hardware OAM after completed frames; never move a sprite
+        # through emulator memory. Each entry begins with screen Y and X.
+        return [(s.p.memory[0xFE00+i],s.p.memory[0xFE01+i])
+                for i in range(0,160,4)]
+
+    for choice,name in ((1,'ember-run'),(3,'orbit-drift')):
+        s=Session()
+        try:
+            s.enter(choice); s.frames(12)
+            assert any(y and x for y,x in positions(s)), 'Gameplay sprites absent before pause'
+            s.tap('start'); assert s.u8('paused')
+            s.capture(name+'-paused')
+            assert all(y==0 and x==0 for y,x in positions(s)), 'Sprites can obscure the pause overlay'
+            s.tap('start'); assert not s.u8('paused')
+            s.capture(name+'-resumed')
+            assert any(y and x for y,x in positions(s)), 'Resume did not restore gameplay sprites'
+            if choice==1:
+                s.buttons(['right'])
+                s.wait(lambda:s.u8('game_over')==1,'Runner did not fall into a gap',3000)
+                s.buttons([]); s.capture(name+'-game-over')
+                assert all(y==0 and x==0 for y,x in positions(s)), 'Sprites can obscure the game-over overlay'
+                s.tap('a'); assert not s.u8('game_over')
+                s.capture(name+'-retried')
+                assert any(y and x for y,x in positions(s)), 'Retry did not restore gameplay sprites'
+        finally: s.close()
+
+
 # Sparse tetromino coordinates provide legal placements to an input-only player.
 SHAPES=[
     [[4,5,6,7],[2,6,10,14],[4,5,6,7],[2,6,10,14]],
@@ -309,6 +338,7 @@ def contact_sheet():
 try:
     check('32 KB color-compatible cartridge and checksums',cartridge)
     check('all five games boot, pause and return in CGB and DMG modes',launcher)
+    check('pause and game-over overlays hide sprites, resume and retry restore them',sprite_overlays)
     check('stack movement, rotation, hard drop, line clearing, top-out and retry',stacking)
     check('platform movement, jump, landing, gap death, pause and retry',platformer)
     check('raycast shooter rotation, hit, score, damage, pause and retry',dungeon)

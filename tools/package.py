@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 ROM=ROOT/'build/chromatic-arcade.gbc'
 report=json.loads((ROOT/'build/playtest/results.json').read_text())
 digest=hashlib.sha256(ROM.read_bytes()).hexdigest()
-assert report['sha256']==digest and len(report['checks'])==7
+assert report['sha256']==digest and len(report['checks'])==8
 assert all(c['outcome']=='passed' for c in report['checks'])
 (ROOT/'roms').mkdir(exist_ok=True)
 shutil.copyfile(ROM,ROOT/'roms/chromatic-arcade.gbc')
